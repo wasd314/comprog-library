@@ -1,0 +1,46 @@
+name: c++ lint
+
+on:
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - '**.hpp'
+      - '**.cpp'
+
+jobs:
+  clang-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Run clang-format
+        uses: cpp-linter/cpp-linter-action@v2
+        id: linter
+        with:
+          version: "21"
+          style: 'file'
+          tidy-checks: '-*'
+
+      - name: Fail if format issues found
+        if: steps.linter.outputs.checks-failed > 0
+        run: exit 1
+
+  clang-tidy:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Run clang-tidy
+        uses: cpp-linter/cpp-linter-action@v2
+        id: linter
+        with:
+          version: "21"
+          style: ''
+          tidy-checks: '*'
+          extra-args: '-std=c++23 -Wall -Wextra -I.'
+
+      - name: Fail if format issues found
+        if: steps.linter.outputs.checks-failed > 0
+        run: exit 1
