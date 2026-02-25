@@ -4,9 +4,6 @@ on:
   pull_request:
     branches:
       - "main"
-    paths:
-      - '**.hpp'
-      - '**.cpp'
 
 jobs:
   clang-format:
