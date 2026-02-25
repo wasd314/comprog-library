@@ -39,7 +39,7 @@ jobs:
           version: "21"
           style: ''
           tidy-checks: '*'
-          extra-args: '-std=c++23 -Wall -Wextra -I.'
+          database: "."
 
       - name: Fail if format issues found
         if: steps.linter.outputs.checks-failed > 0
