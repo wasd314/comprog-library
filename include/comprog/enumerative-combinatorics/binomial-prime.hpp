@@ -1,5 +1,5 @@
-#ifndef WASD314_LIBRARY_ENUMERATIVE_COMBINATORICS_BINOMIAL_PRIME_HPP_
-#define WASD314_LIBRARY_ENUMERATIVE_COMBINATORICS_BINOMIAL_PRIME_HPP_
+#ifndef WASD314_COMPROG_ENUMERATIVE_COMBINATORICS_BINOMIAL_PRIME_HPP_
+#define WASD314_COMPROG_ENUMERATIVE_COMBINATORICS_BINOMIAL_PRIME_HPP_
 
 #include <algorithm>
 #include <cassert>
@@ -8,9 +8,9 @@
 #include <utility>
 #include <vector>
 
-#include "library/utility/types.hpp"
+#include <comprog/utility/types.hpp>
 
-namespace wasd314::enumerative_combinatorics {
+namespace comprog::enumerative_combinatorics {
 template <typename T>
 struct BinomialPrime {
     std::vector<T> _fact, _inv_fact, _inv;
@@ -118,6 +118,6 @@ struct BinomialPrime {
         return multinomial(il);
     }
 };
-}  // namespace wasd314::enumerative_combinatorics
+}  // namespace comprog::enumerative_combinatorics
 
-#endif  // WASD314_LIBRARY_ENUMERATIVE_COMBINATORICS_BINOMIAL_PRIME_HPP_
+#endif  // WASD314_COMPROG_ENUMERATIVE_COMBINATORICS_BINOMIAL_PRIME_HPP_
