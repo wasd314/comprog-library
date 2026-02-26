@@ -119,5 +119,9 @@ struct BinomialPrime {
     }
 };
 }  // namespace comprog::enumerative_combinatorics
+namespace comprog {
+template <typename T>
+constexpr enumerative_combinatorics::BinomialPrime<T> binom;
+}
 
 #endif  // WASD314_COMPROG_ENUMERATIVE_COMBINATORICS_BINOMIAL_PRIME_HPP_
