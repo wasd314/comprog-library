@@ -1,6 +1,7 @@
 // competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
 #include <iostream>
 #include <ranges>
+#include <sstream>
 
 #include <atcoder/all>
 
@@ -12,10 +13,12 @@ int main() {
     cin >> t >> m;
     using mint = atcoder::modint;
     mint::set_mod(m);
-    comprog::enumerative_combinatorics::BinomialPrime<mint> binom;
+    comprog::enumerative_combinatorics::BinomialPrime<mint> binom(11000000);
+    stringstream buf;
     for (int _ : views::iota(0, t)) {
         int n, k;
         cin >> n >> k;
-        cout << binom(n, k).val() << "\n";
+        buf << binom(n, k).val() << "\n";
     }
+    cout << buf.view();
 }
