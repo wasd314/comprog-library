@@ -36,8 +36,8 @@ jobs:
           version: "21"
           style: ''
           tidy-checks: '*'
-          database: "."
-          extra-args: '-I./external/ac-library'
+          # database: "."
+          extra-args: '-std=c++23 -Wall -Wextra -I. -I./external/ac-library'
 
       - name: Fail if format issues found
         if: steps.linter.outputs.checks-failed > 0
