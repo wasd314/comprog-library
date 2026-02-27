@@ -1,7 +1,7 @@
 [[languages.cpp.environments]]
 CXX = "g++"
-CXXFLAGS = ["-std=c++23", "-Wall", "-Wextra", "-fsanitize=undefined", "-I", "./external/ac-library"]
+CXXFLAGS = ["-std=c++23", "-Wall", "-Wextra", "-O2", "-I", "./external/ac-library"]
 
 [[languages.cpp.environments]]
 CXX = "clang++"
-CXXFLAGS = ["-std=c++23", "-Wall", "-Wextra", "-fsanitize=undefined", "-I", "./external/ac-library"]
+CXXFLAGS = ["-std=c++23", "-Wall", "-Wextra", "-O2", "-I", "./external/ac-library"]
