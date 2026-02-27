@@ -19,8 +19,12 @@ struct BinomialPrime {
         : _fact{T{1}}, _inv_fact{T{1}}, _inv{T{1}} {
         if (max > 0) extend(max + 1);
     };
+
+    constexpr int size() const { return _fact.size(); }
+
     constexpr void extend(int max = -1) {
-        int n = _fact.size();
+        int n = size();
+        if (max <= n) return;
         if (max == -1 || max < n * 2) max = n * 2;
         max = std::min(max + 1, T::mod());
         if (max <= n) return;
