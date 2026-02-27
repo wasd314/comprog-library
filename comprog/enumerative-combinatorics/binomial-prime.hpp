@@ -14,7 +14,6 @@ namespace comprog::enumerative_combinatorics {
 template <typename T>
 struct BinomialPrime {
     std::vector<T> _fact, _inv_fact, _inv;
-    static_assert(T::mod() > 0, "T::mod() defined");
 
     constexpr BinomialPrime(int max = 0)
         : _fact{T{1}}, _inv_fact{T{1}}, _inv{T{1}} {
