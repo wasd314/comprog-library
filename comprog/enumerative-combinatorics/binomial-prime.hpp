@@ -24,7 +24,7 @@ struct BinomialPrime {
 
     constexpr void extend(int max = -1) {
         int n = size();
-        if (max <= n) return;
+        if (max < n) return;
         if (max == -1 || max < n * 2) max = n * 2;
         max = std::min(max + 1, T::mod());
         if (max <= n) return;
