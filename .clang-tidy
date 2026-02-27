@@ -1,0 +1,52 @@
+---
+Checks: >
+  clang-diagnostic-*,
+  clang-analyzer-*,
+  boost-*,
+  bugprone-*,
+  performance-*,
+  portability-*,
+  modernize-*,
+  clang-analyzer-*,
+  cppcoreguidelines-*,
+  readability-*,
+  -bugprone-narrowing-conversions,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-init-variables,
+  -cppcoreguidelines-narrowing-conversions,
+  -cppcoreguidelines-pro-type-member-init,
+  -misc-non-private-member-variables-in-classes,
+  -modernize-use-nodiscard,
+  -modernize-use-trailing-return-type,
+  -readability-braces-around-statements,
+  -readability-identifier-length,
+  -readability-identifier-naming,
+  -readability-implicit-bool-conversion,
+  -readability-implicit-bool-conversion,
+  -readability-isolate-declaration,
+  -readability-magic-numbers,
+  -readability-named-parameter,
+  -clang-analyzer-deadcode.DeadStores,
+WarningsAsErrors: ''
+ExtraArgs:
+  - -std=c++23
+  - -Wall
+  - -Wextra
+  - -I./external/ac-library
+HeaderFileExtensions:
+  - ''
+  - h
+  - hh
+  - hpp
+  - hxx
+ImplementationFileExtensions:
+  - c
+  - cc
+  - cpp
+  - cxx
+HeaderFilterRegex: ''
+ExcludeHeaderFilterRegex: ''
+FormatStyle:     file
+SystemHeaders:   false
+...
+

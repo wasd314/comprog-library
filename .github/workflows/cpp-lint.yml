@@ -28,6 +28,8 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v6
+        with:
+          submodules: true
 
       - name: Run clang-tidy
         uses: cpp-linter/cpp-linter-action@v2
@@ -35,8 +37,13 @@ jobs:
         with:
           version: "21"
           style: ''
-          tidy-checks: '*'
+          tidy-checks: ''
           database: "."
+          # extra-args: '-std=c++23 -Wall -Wextra -I. -I./external/ac-library'
+
+      - name: Log issue count
+        run: |
+          echo "Total issues found: ${{ steps.linter.outputs.checks-failed }}."
 
       - name: Fail if format issues found
         if: steps.linter.outputs.checks-failed > 0

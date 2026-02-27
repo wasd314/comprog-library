@@ -262,7 +262,7 @@ PointerAlignment: Right
 #     CanonicalDelimiter: pb
 #     BasedOnStyle:    google
 # ReferenceAlignment: Pointer
-# ReflowComments:  Always
+ReflowComments:  IndentOnly
 # RemoveBracesLLVM: false
 # RemoveEmptyLinesInUnwrappedLines: false
 # RemoveParentheses: Leave
