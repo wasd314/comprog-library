@@ -41,6 +41,10 @@ jobs:
           database: "."
           # extra-args: '-std=c++23 -Wall -Wextra -I. -I./external/ac-library'
 
+      - name: Log issue count
+        run: |
+          echo "Total issues found: ${{ steps.linter.outputs.checks-failed }}."
+
       - name: Fail if format issues found
         if: steps.linter.outputs.checks-failed > 0
         run: exit 1
