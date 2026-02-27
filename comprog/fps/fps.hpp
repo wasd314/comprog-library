@@ -29,7 +29,7 @@ struct Fps {
     using difference_type = i64;
     using value_type = Vec::value_type;
 
-    constexpr Fps() {}
+    constexpr Fps() = default;
     constexpr explicit Fps(size_t n) : _f(n) {}
     constexpr explicit Fps(size_t n, const T &value) : _f(n, value) {}
     template <typename InputIter>
@@ -84,7 +84,7 @@ struct Fps {
 
     constexpr Fps &operator+=(const Fps &r) {
         if (size() < r.size()) resize(r.size());
-        for (i64 i : std::views::iota(0ll, size())) _f[i] += r[i];
+        for (i64 i : std::views::iota(0LL, size())) _f[i] += r[i];
         return *this;
     }
     constexpr Fps &operator+=(const T &r) {
@@ -94,8 +94,7 @@ struct Fps {
     }
     constexpr Fps &operator-=(const Fps &r) {
         if (size() < r.size()) resize(r.size());
-        for (i64 i : std::views::iota(0ll, size())) _f[i] -= r[i];
-
+        for (i64 i : std::views::iota(0LL, size())) _f[i] -= r[i];
         return *this;
     }
     constexpr Fps &operator-=(const T &r) {
@@ -135,7 +134,10 @@ struct Fps {
     constexpr Fps operator-(const Fps &r) const & { return Fps(*this) -= r; }
     constexpr Fps operator-(const Fps &r) && { return std::move(*this) -= r; }
     constexpr Fps operator-(Fps &&r) const & { return -std::move(r) += *this; }
-    constexpr Fps operator-(Fps &&r) && { return std::move(*this) - r; }
+    constexpr Fps operator-(Fps &&r) && {
+        return size() >= r.size() ? std::move(*this) -= r
+                                  : -std::move(r) + *this;
+    }
     // constexpr Fps operator*(const Fps &r) const & { return Fps(*this) -= r; }
 
     constexpr void shrink() {
@@ -169,12 +171,12 @@ struct Fps {
 
     constexpr void differentiate() {
         if (empty()) return;
-        for (i64 i : std::views::iota(1ll, size())) _f[i] *= i;
+        for (i64 i : std::views::iota(1LL, size())) _f[i] *= i;
         erase(begin());
     }
     constexpr void integrate() {
         insert(begin(), T{0});
-        for (i64 i : std::views::iota(1ll, size())) _f[i] *= binom<T>.inv(i);
+        for (i64 i : std::views::iota(1LL, size())) _f[i] *= binom<T>.inv(i);
     }
     constexpr Fps differentiated() const {
         Fps ans(*this);
@@ -188,10 +190,10 @@ struct Fps {
     }
 
     constexpr void fact_mul() {
-        for (i64 i : std::views::iota(0ll, size())) _f[i] *= binom<T>.fact(i);
+        for (i64 i : std::views::iota(0LL, size())) _f[i] *= binom<T>.fact(i);
     }
     constexpr void fact_div() {
-        for (i64 i : std::views::iota(0ll, size()))
+        for (i64 i : std::views::iota(0LL, size()))
             _f[i] *= binom<T>.inv_fact(i);
     }
     constexpr Fps fact_muled() const {

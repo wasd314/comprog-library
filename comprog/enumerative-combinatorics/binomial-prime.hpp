@@ -65,7 +65,7 @@ struct BinomialPrime {
         if (0 <= k && k <= n) return fact(n) * inv_fact(k) * inv_fact(n - k);
         return T{0};
     }
-    constexpr inline T operator()(int n, int k) { return c(n, k); }
+    constexpr T operator()(int n, int k) { return c(n, k); }
     constexpr T c_naive(i64 n, int k) {
         if (n < 0) {
             if (k >= 0) return (k % 2 ? T{-1} : T{1}) * c(-n + k - 1, k);
@@ -96,7 +96,7 @@ struct BinomialPrime {
 
     template <std::ranges::input_range R>
         requires std::convertible_to<std::ranges::range_reference_t<R>, int>
-    constexpr T multinomial(R &&rg) {
+    constexpr T multinomial(const R &rg) {
         T den{1};
         int n = 0;
         for (int k : rg) {
@@ -110,10 +110,10 @@ struct BinomialPrime {
     }
     template <std::ranges::input_range R>
         requires std::convertible_to<std::ranges::range_reference_t<R>, int>
-    constexpr inline T operator()(R &&rg) {
+    constexpr T operator()(R &&rg) {
         return multinomial(std::forward(rg));
     }
-    constexpr inline T operator()(std::initializer_list<int> il) {
+    constexpr T operator()(std::initializer_list<int> il) {
         return multinomial(il);
     }
 };
