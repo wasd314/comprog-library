@@ -37,7 +37,7 @@ jobs:
         with:
           version: "21"
           style: ''
-          tidy-checks: '*'
+          tidy-checks: '*,-llvmlibc-*,-misc-non-private-member-variables-in-classes,-llvm-header-guard'
           database: "."
           # extra-args: '-std=c++23 -Wall -Wextra -I. -I./external/ac-library'
 
