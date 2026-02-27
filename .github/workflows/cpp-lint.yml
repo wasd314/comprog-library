@@ -37,6 +37,7 @@ jobs:
           style: ''
           tidy-checks: '*'
           database: "."
+          extra-args: '-I./external/ac-library'
 
       - name: Fail if format issues found
         if: steps.linter.outputs.checks-failed > 0
