@@ -8,7 +8,7 @@
 #include <utility>
 #include <vector>
 
-#include <comprog/utility/types.hpp>
+#include "comprog/utility/types.hpp"
 
 namespace comprog::enumerative_combinatorics {
 template <typename T>

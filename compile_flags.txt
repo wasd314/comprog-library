@@ -1,5 +1,5 @@
 -std=c++23
 -Wall
 -Wextra
--I./include
+-I.
 -I./external/ac-library
